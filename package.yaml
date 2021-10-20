@@ -2,19 +2,43 @@ name:                swarm
 version:             0.1.0.0
 #synopsis:
 #description:
-homepage:            https://github.com/githubuser/swarm#readme
+homepage:            https://github.com/tippenein/swarm#readme
 license:             BSD3
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2021 Author name here
-category:            Web
+author:              Brady Ouren
+maintainer:          tippenein@gmail.com
+copyright:           2021 Brady Ouren
 extra-source-files:
 - README.md
 
+
 dependencies:
-  - base >= 4.7 && < 5
+- base >= 4.7 && < 5
+- gloss
+- containers
+- split
+- random
+- uuid
+- uuid-types
+- text
+
+library:
+  source-dirs: src
+
+default-extensions:
+  - OverloadedStrings
+  - DeriveGeneric
+  - NamedFieldPuns
+  - RecordWildCards
+  - DataKinds
 
 executables:
   swarm:
-    source-dirs:      src
-    main:             Main.hs
+    source-dirs: exe
+    main: Main.hs
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -Werror
+    dependencies:
+    - swarm

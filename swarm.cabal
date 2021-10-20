@@ -4,27 +4,55 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 659171d0c8657d0af1bca1b3c191bd2040b3354298a3cb54e7d8635d9d158760
+-- hash: 5c0d088cfaf4f83cd7f2ed16e7130c9497f2f8224ced4cccab1711474c518953
 
 name:           swarm
 version:        0.1.0.0
-category:       Web
-homepage:       https://github.com/githubuser/swarm#readme
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2021 Author name here
+homepage:       https://github.com/tippenein/swarm#readme
+author:         Brady Ouren
+maintainer:     tippenein@gmail.com
+copyright:      2021 Brady Ouren
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
 
+library
+  exposed-modules:
+      Swarm
+  other-modules:
+      Paths_swarm
+  hs-source-dirs:
+      src
+  default-extensions: OverloadedStrings DeriveGeneric NamedFieldPuns RecordWildCards DataKinds
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , gloss
+    , random
+    , split
+    , text
+    , uuid
+    , uuid-types
+  default-language: Haskell2010
+
 executable swarm
   main-is: Main.hs
   other-modules:
       Paths_swarm
   hs-source-dirs:
-      src
+      exe
+  default-extensions: OverloadedStrings DeriveGeneric NamedFieldPuns RecordWildCards DataKinds
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -Werror
   build-depends:
       base >=4.7 && <5
+    , containers
+    , gloss
+    , random
+    , split
+    , swarm
+    , text
+    , uuid
+    , uuid-types
   default-language: Haskell2010
